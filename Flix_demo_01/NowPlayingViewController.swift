@@ -10,7 +10,6 @@ import UIKit
 import AlamofireImage
 
 class NowPlayingViewController: UIViewController, UITableViewDataSource {
-
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,6 +17,14 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    let alert = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        // handle cancel response here. Doing nothing will dismiss the view.
+       
+        
+    }
     
     override func viewDidLoad() {
         activityIndicator.startAnimating()
@@ -50,6 +57,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when network request returns
             if let error = error {
+                self.alert.addAction(self.cancelAction)
+                self.present(self.alert, animated: true, completion: nil)
+                
                 print(error.localizedDescription)
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
