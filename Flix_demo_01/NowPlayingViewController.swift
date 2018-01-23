@@ -21,6 +21,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     let alert = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
     
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        
+        fetchMovies()
         // handle cancel response here. Doing nothing will dismiss the view.
        
         
@@ -36,7 +38,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector (NowPlayingViewController.didPullToRefresh(_:)),  for: .valueChanged)
-        tableView.insertSubview(refreshControl, at: 0)
+        tableView.insertSubview(refreshControl, at: 1)
         
         fetchMovies()
         activityIndicator.stopAnimating()
