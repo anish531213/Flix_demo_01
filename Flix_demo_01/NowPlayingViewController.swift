@@ -18,16 +18,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let alert = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
-    
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-        
-        fetchMovies()
-        // handle cancel response here. Doing nothing will dismiss the view.
-       
-        
-    }
-    
     override func viewDidLoad() {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
@@ -49,7 +39,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         fetchMovies()
     }
     
-    func fetchMovies() {
+     func fetchMovies() {
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=946e1a7e73e67b8395a09bcc57800281")!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
@@ -59,8 +49,16 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when network request returns
             if let error = error {
-                self.alert.addAction(self.cancelAction)
-                self.present(self.alert, animated: true, completion: nil)
+                
+                let alert = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: "Try Again", style: .cancel) { (action) in
+                    
+                    self.fetchMovies()
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                }
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true, completion: nil)
                 
                 print(error.localizedDescription)
             } else if let data = data {
