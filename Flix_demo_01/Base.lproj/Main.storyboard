@@ -137,7 +137,7 @@
         <scene sceneID="Rso-H2-bKp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Qr-4k-b9b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" selectedImage="now_playing_tabbar_item" id="7yy-Cz-qpH"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="now_playing_tabbar_item" selectedImage="now_playing_tabbar_item" id="7yy-Cz-qpH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Cq-jF-l9I">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -186,11 +186,11 @@
             </objects>
             <point key="canvasLocation" x="-817" y="33"/>
         </scene>
-        <!--Item-->
+        <!--Superhero-->
         <scene sceneID="fRN-h6-8sf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uyw-2L-Te6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xSt-0t-Kfb"/>
+                    <tabBarItem key="tabBarItem" title="Superhero" image="superhero_tabbar_item" id="xSt-0t-Kfb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Sx9-zX-RBc">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -209,5 +209,6 @@
     <resources>
         <image name="Movie_night" width="1433" height="1340"/>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
 </document>
