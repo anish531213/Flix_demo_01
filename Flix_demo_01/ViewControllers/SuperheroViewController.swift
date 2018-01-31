@@ -39,7 +39,7 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func fetchMovies() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=946e1a7e73e67b8395a09bcc57800281")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/24428/similar?api_key=946e1a7e73e67b8395a09bcc57800281")!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
         
@@ -73,7 +73,14 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         task.resume()
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UICollectionViewCell
+        if let indexPath = collectionView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

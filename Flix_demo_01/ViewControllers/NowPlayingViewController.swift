@@ -94,6 +94,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
+   
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! UITableViewCell
@@ -101,9 +102,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
             let movie = movies[indexPath.row]
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.movie = movie
+            tableView.deselectRow(at: indexPath, animated: true)
         }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
