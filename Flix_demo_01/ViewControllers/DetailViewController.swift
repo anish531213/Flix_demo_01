@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 enum MovieKeys {
     static let title = "title"
@@ -18,17 +19,17 @@ enum MovieKeys {
 
 class DetailViewController: UIViewController {
 
+    
     @IBOutlet weak var backDropImageView: UIImageView!
-    
     @IBOutlet weak var posterImageView: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var releaseDateLabel: UILabel!
-    
     @IBOutlet weak var overviewLabel: UILabel!
     
+    
     var movie: [String: Any]?
+    var trailerLink: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +46,35 @@ class DetailViewController: UIViewController {
             backDropImageView.af_setImage(withURL: backDropUrl!)
             let posterPathUrl = URL(string: baseUrlString+posterPathString)
             posterImageView.af_setImage(withURL: posterPathUrl!)
+            getMovieTrailer()
         }
         
     }
+    
+    func getMovieTrailer() {
+        let movie_id = movie!["id"]
+        let videoUrl = "https://api.themoviedb.org/3/movie/\(movie_id ?? 284053)/videos?api_key=946e1a7e73e67b8395a09bcc57800281"
+        Alamofire.request(videoUrl).responseJSON { response in
+            let data = response.result.value! as! NSDictionary
+            let results = data["results"] as! [NSDictionary]
+            let trailer = results[0]["key"] as! String
+            self.trailerLink = "https://www.youtube.com/watch?v=\(trailer)"
+        }
+    }
 
+    @IBAction func onPosterTap(_ sender: UITapGestureRecognizer) {
+        //print("poster Tapped")
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc: TrailerViewController = segue.destination as! TrailerViewController
+        
+        vc.url = self.trailerLink!
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

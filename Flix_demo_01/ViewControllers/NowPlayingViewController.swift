@@ -11,12 +11,15 @@ import AlamofireImage
 
 class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     var movies: [[String: Any]] = []
     var refreshControl: UIRefreshControl!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         activityIndicator.startAnimating()

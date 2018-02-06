@@ -10,9 +10,12 @@ import UIKit
 
 class SuperheroViewController: UIViewController, UICollectionViewDataSource {
 
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
     var movies: [[String: Any]] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
