@@ -40,11 +40,11 @@
                                                     <rect key="frame" x="8" y="8" width="115" height="157"/>
                                                     <color key="backgroundColor" red="0.56989848613739014" green="0.98092764616012573" blue="0.02712225541472435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="157" id="BJs-0S-bTW"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="180" id="BJs-0S-bTW"/>
                                                         <constraint firstAttribute="width" constant="115" id="h1f-CO-eGB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jumanji: Welcome to the Jungle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpe-2s-rdt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Jumanji: Welcome to the Jungle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpe-2s-rdt">
                                                     <rect key="frame" x="131" y="8" width="273" height="48"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -54,6 +54,9 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7A-FY-SdV">
                                                     <rect key="frame" x="131" y="64.333333333333314" width="273" height="101.66666666666669"/>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="UWi-Im-Jot"/>
+                                                    </constraints>
                                                     <string key="text">The tables are turned as four teenagers are sucked into Jumanji's world - pitted against rhinos, black mambas and an endless variety of jungle traps and puzzles. To survive</string>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -61,15 +64,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U7A-FY-SdV" secondAttribute="bottom" constant="9" id="0L8-73-PdG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Jpe-2s-rdt" secondAttribute="trailing" constant="-23" id="78F-YC-MLx"/>
                                                 <constraint firstItem="U7A-FY-SdV" firstAttribute="leading" secondItem="Ywe-m4-1fy" secondAttribute="trailing" constant="8" id="9pS-so-Wmz"/>
                                                 <constraint firstItem="Ywe-m4-1fy" firstAttribute="leading" secondItem="RYi-aO-m4w" secondAttribute="leading" constant="8" id="KTA-0x-DSq"/>
                                                 <constraint firstAttribute="trailing" secondItem="U7A-FY-SdV" secondAttribute="trailing" constant="-23" id="Vte-1b-B3a"/>
                                                 <constraint firstItem="Ywe-m4-1fy" firstAttribute="top" secondItem="RYi-aO-m4w" secondAttribute="top" constant="8" id="dhv-LN-kuc"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="U7A-FY-SdV" secondAttribute="bottom" constant="8.6699999999999999" id="f4e-5q-QFP"/>
                                                 <constraint firstItem="Jpe-2s-rdt" firstAttribute="leading" secondItem="Ywe-m4-1fy" secondAttribute="trailing" constant="8" id="llC-cn-at2"/>
                                                 <constraint firstItem="U7A-FY-SdV" firstAttribute="top" secondItem="Jpe-2s-rdt" secondAttribute="bottom" constant="8" id="nND-Rp-4Cc"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ywe-m4-1fy" secondAttribute="bottom" constant="9.6699999999999999" id="y2Z-pV-1Cr"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ywe-m4-1fy" secondAttribute="bottom" constant="9.6699999999999999" id="y2Z-pV-1Cr"/>
                                                 <constraint firstItem="Jpe-2s-rdt" firstAttribute="top" secondItem="RYi-aO-m4w" secondAttribute="top" constant="8" id="yty-yn-FCo"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -229,10 +232,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kyY-Hu-Wyn">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kyY-Hu-Wyn">
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91169345378875732" green="0.3143572211265564" blue="0.35589587688446045" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.77534407377243042" green="0.91067570447921753" blue="0.42905014753341675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="0.0" id="V22-FZ-z5Z">
                                     <size key="itemSize" width="205" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -262,6 +264,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kyY-Hu-Wyn" firstAttribute="top" secondItem="IES-4q-RWd" secondAttribute="bottom" id="ISr-h9-Kec"/>
+                            <constraint firstItem="kbN-v5-XbB" firstAttribute="top" secondItem="kyY-Hu-Wyn" secondAttribute="bottom" id="VBT-qN-M7Y"/>
+                            <constraint firstAttribute="trailing" secondItem="kyY-Hu-Wyn" secondAttribute="trailing" id="o2E-LH-3ep"/>
+                            <constraint firstItem="kyY-Hu-Wyn" firstAttribute="leading" secondItem="AYE-dB-9Bh" secondAttribute="leading" id="sDz-SG-Qfd"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Superhero" id="5Yz-Ij-g0o"/>
                     <connections>
