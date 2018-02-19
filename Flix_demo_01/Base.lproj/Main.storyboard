@@ -159,6 +159,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hyc-X1-T7t" firstAttribute="trailing" secondItem="Unm-OO-tA2" secondAttribute="trailingMargin" id="3FQ-0W-mpx"/>
+                            <constraint firstItem="hyc-X1-T7t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q1a-Ol-KQp" secondAttribute="bottom" constant="8" id="4Kt-WJ-vSI"/>
                             <constraint firstItem="M3B-an-urm" firstAttribute="leading" secondItem="Bgw-uL-xsO" secondAttribute="trailing" constant="8" id="6L3-CK-Ip3"/>
                             <constraint firstItem="I7n-fT-d4o" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hyc-X1-T7t" secondAttribute="bottom" constant="8" id="7oB-km-beZ"/>
                             <constraint firstItem="Bgw-uL-xsO" firstAttribute="leading" secondItem="Unm-OO-tA2" secondAttribute="leadingMargin" constant="16" id="9y0-BE-KdL"/>
