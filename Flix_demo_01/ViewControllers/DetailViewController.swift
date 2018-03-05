@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     
     
-    var movie: [String: Any]?
+    var movie: Movie!
     var trailerLink: String?
     
     
@@ -36,23 +36,22 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if let movie = movie {
-            titleLabel.text = movie[MovieKeys.title] as? String
-            releaseDateLabel.text = movie[MovieKeys.release] as? String
-            overviewLabel.text = movie[MovieKeys.overview] as? String
-            let backDropPathString = movie[MovieKeys.backdropPath] as! String
-            let posterPathString = movie[MovieKeys.posterPath] as! String
-            let baseUrlString = "https://image.tmdb.org/t/p/w500"
-            let backDropUrl = URL(string: baseUrlString+backDropPathString)
-            backDropImageView.af_setImage(withURL: backDropUrl!)
-            let posterPathUrl = URL(string: baseUrlString+posterPathString)
-            posterImageView.af_setImage(withURL: posterPathUrl!)
+            titleLabel.text = movie.title
+            releaseDateLabel.text = movie.release
+            overviewLabel.text = movie.overview
+            if movie.backdropUrl != nil {
+                backDropImageView.af_setImage(withURL: movie.backdropUrl!)
+            }
+            if movie.posterUrl != nil {
+                posterImageView.af_setImage(withURL: movie.posterUrl!)
+            }
             getMovieTrailer()
         }
         
     }
     
     func getMovieTrailer() {
-        let movie_id = movie!["id"]
+        let movie_id = movie.id
         let videoUrl = "https://api.themoviedb.org/3/movie/\(movie_id ?? 284053)/videos?api_key=946e1a7e73e67b8395a09bcc57800281"
         Alamofire.request(videoUrl).responseJSON { response in
             let data = response.result.value! as! NSDictionary

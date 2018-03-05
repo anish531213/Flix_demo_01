@@ -9,12 +9,10 @@
 import UIKit
 
 class SuperheroViewController: UIViewController, UICollectionViewDataSource {
-
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
-    var movies: [[String: Any]] = []
+    var movies: [Movie] = []
     
     
     override func viewDidLoad() {
@@ -32,48 +30,20 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PosterCell", for: indexPath) as! PosterCell
         let movie = movies[indexPath.item]
         
-        if let posterPathString = movie["poster_path"] as? String {
-            let baseUrlString = "https://image.tmdb.org/t/p/w500"
-            let posterUrl = URL(string: baseUrlString+posterPathString)!
-            cell.posterImageView.af_setImage(withURL: posterUrl)
+        if movie.posterUrl != nil {
+            cell.posterImageView.af_setImage(withURL: movie.posterUrl!)
         }
         return cell
         
     }
     
     func fetchMovies() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/24428/similar?api_key=946e1a7e73e67b8395a09bcc57800281")!
-        
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
-        
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            // This will run when network request returns
-            if let error = error {
-                
-                let alert = UIAlertController(title: "Cannot Get Movies", message: "The internet connection appears to be offline", preferredStyle: .alert)
-                
-                let cancelAction = UIAlertAction(title: "Try Again", style: .cancel) { (action) in
-                    
-                    self.fetchMovies()
-                    // handle cancel response here. Doing nothing will dismiss the view.
-                }
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true, completion: nil)
-                
-                print(error.localizedDescription)
-            } else if let data = data {
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                
-                let movies = dataDictionary["results"] as! [[String: Any]]
+        MovieApiManager().popularMovies { (movies: [Movie]?, error: Error?) in
+            if let movies = movies {
                 self.movies = movies
                 self.collectionView.reloadData()
-//                self.refreshControl.endRefreshing()
             }
         }
-        
-        task.resume()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

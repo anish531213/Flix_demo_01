@@ -221,7 +221,7 @@
             </objects>
             <point key="canvasLocation" x="-60" y="40"/>
         </scene>
-        <!--Superhero-->
+        <!--Popular-->
         <scene sceneID="Pk4-nV-2B3">
             <objects>
                 <viewController id="rWD-fA-Qbu" customClass="SuperheroViewController" customModule="Flix_demo_01" customModuleProvider="target" sceneMemberID="viewController">
@@ -272,7 +272,7 @@
                             <constraint firstItem="kyY-Hu-Wyn" firstAttribute="leading" secondItem="AYE-dB-9Bh" secondAttribute="leading" id="sDz-SG-Qfd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Superhero" id="5Yz-Ij-g0o"/>
+                    <navigationItem key="navigationItem" title="Popular" id="5Yz-Ij-g0o"/>
                     <connections>
                         <outlet property="collectionView" destination="kyY-Hu-Wyn" id="2Ti-tJ-T9p"/>
                     </connections>
@@ -378,7 +378,7 @@
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xz7-9h-GGD"/>
+        <segue reference="Guf-Pu-uPE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
